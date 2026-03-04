@@ -1,77 +1,65 @@
-# StatSight RAG (Statistical Results Interpreter + Figure Checker)
+# Ayurvedic Project: Gastroenterology-Focused RAG Assistant
 
-This repository provides a practical starter implementation for your **StatSight** idea: a retrieval-augmented assistant that combines:
+This branch (`ayurvedic-project`) contains a **full retrieval-augmented generation (RAG) baseline** for your paper topic:
 
-1. **Evidence retrieval (RAG)** over method/reporting guidelines.
-2. **Programmatic statistical analysis** on tabular data (CSV).
-3. **Results-section style writing** with assumptions, effect size, confidence intervals, and plot suggestions.
+> *A large language model assistant for gastroenterology in traditional Ayurvedic medicine.*
 
-## Why this design works for a research paper
+The implementation is designed for **research writing workflows**:
+- retrieve evidence snippets from a curated Ayurvedic gastro corpus,
+- ground responses with explicit source citations,
+- produce paper-ready draft text with safety disclaimers.
 
-- It avoids "hallucinated stats" by computing every statistic directly from data.
-- It keeps responses grounded by retrieving relevant methodological snippets.
-- It is easy to reproduce (single CLI command, deterministic analysis code).
+## What is included
 
-## Project structure
-
-- `src/statsight_rag.py` — main pipeline + CLI.
-- `data/knowledge/` — put your paper/reporting guidelines here (`.txt` files).
-- `data/sample_experiment.csv` — tiny demo dataset.
-- `requirements.txt` — dependencies.
+- `src/ayurvedic_gastro_rag.py`
+  - document loading and chunking,
+  - lightweight BM25 retriever (pure Python, no external vector DB required),
+  - response synthesizer with citations,
+  - CLI for indexing and querying.
+- `data/ayurveda_gastro_knowledge/*.txt`
+  - starter domain corpus focused on agni/ama, functional GI patterns, interventions and safety.
+- `tests/test_ayurvedic_gastro_rag.py`
+  - unit tests for chunking, retrieval relevance, and response citation format.
 
 ## Quickstart
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python src/statsight_rag.py \
-  --data data/sample_experiment.csv \
-  --question "Is treatment better than control?" \
-  --corpus_dir data/knowledge
+# Build the chunk index
+python src/ayurvedic_gastro_rag.py --build_index
+
+# Ask a gastro-focused question
+python src/ayurvedic_gastro_rag.py \
+  --question "How should I frame an Ayurvedic interpretation of IBS-like symptoms in my paper?"
 ```
 
-## Input format suggestions
+## Example research questions
 
-The analyzer auto-detects roles from columns, but best practice is to provide one of these layouts:
+- "How does agni imbalance relate to functional dyspepsia?"
+- "What safety language should be included in an Ayurvedic gastro assistant paper?"
+- "How can I structure multimodal intervention reporting (diet, lifestyle, herbal)?"
 
-1. **Two-group comparison**
-   - `group` (categorical, e.g., control/treatment)
-   - `outcome` (numeric)
-2. **Multi-group comparison**
-   - `group` + `outcome`
-3. **Association test**
-   - two categorical columns
-4. **Correlation**
-   - two numeric columns
+## Suggested paper method section wording
 
-## What the tool returns
+You can describe the system as:
+1. **Corpus construction**: Curated gastroenterology-relevant Ayurvedic text snippets.
+2. **Segmentation**: Fixed-size chunking with overlap to preserve context continuity.
+3. **Retrieval**: BM25 lexical relevance scoring over chunks.
+4. **Grounded generation**: Prompted narrative constrained by top-k retrieved evidence.
+5. **Safety layer**: Mandatory non-diagnostic disclaimer and red-flag escalation language.
 
-- Selected test and rationale.
-- Assumption checks (Shapiro normality, Levene variance homogeneity when relevant).
-- Test statistic, p-value, confidence interval (where implemented), effect size.
-- Suggested figure type.
-- Publication-ready text block for a Results section.
-- Retrieved context snippets used for grounding.
+## Next upgrades (for publication depth)
 
-## Research-paper framing ideas
+- Swap BM25 with embedding retrieval (e.g., bge/e5) and reranker.
+- Add structured patient profile input (symptoms, tongue/stool patterns, triggers).
+- Add dual-output mode:
+  - *Ayurvedic interpretation* and
+  - *Biomedical differential red-flag checklist*.
+- Add evaluation metrics:
+  - retrieval precision@k,
+  - citation faithfulness,
+  - hallucination rate,
+  - expert rubric score (Ayurveda clinician + GI specialist).
 
-You can report this as a **hybrid neuro-symbolic analysis assistant**:
+## Safety note
 
-- Retrieval component: TF-IDF similarity retrieval over domain/reporting knowledge.
-- Symbolic/statistical component: explicit test selection and numerical computation with SciPy/StatsModels.
-- Natural-language component: template-based scientific reporting constrained by computed values.
-
-Potential evaluation axes:
-
-- Test selection accuracy vs. statisticians.
-- Numerical correctness (exact match to known outputs).
-- Reporting completeness (includes effect size + assumptions).
-- Hallucination rate vs. generic LLM baseline.
-
-## Limitations and next steps
-
-- Current retriever is TF-IDF (swap with embedding model/vector DB for stronger semantic search).
-- Add multiple-comparison corrections and mixed-effects models.
-- Add figure generation and automated figure-check consistency tests.
-- Add a grading harness against benchmark datasets.
+This codebase supports academic writing and prototyping. It is **not** a clinical decision system and should not be used for direct diagnosis or emergency triage.

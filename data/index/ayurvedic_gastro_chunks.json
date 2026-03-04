@@ -1,0 +1,20 @@
+[
+  {
+    "chunk_id": "agni_ama_foundations.txt::chunk-1",
+    "source": "agni_ama_foundations.txt",
+    "title": "Agni Ama Foundations",
+    "text": "In Ayurvedic gastroenterology, agni (digestive-metabolic fire) is central to appetite, digestion, and tissue nourishment. Mandagni is associated with heaviness, bloating, lethargy, and incomplete digestion. Vishamagni is irregular and often linked to fluctuating appetite, gas, and alternating bowel patterns. Tikshnagni may manifest as excessive hunger, burning, loose stools, and pitta signs. Ama is described as incompletely transformed metabolic residue that can obstruct channels and trigger inflammation-like symptom clusters. In clinical translation, ama-oriented patterns often overlap with post-prandial heaviness, coated tongue, foul belching, constipation with mucus, or mixed IBS features. Initial management prioritizes langhana (lightening), dipana-pachana (kindling and digesting), and structured meal timing before stronger rejuvenative strategies."
+  },
+  {
+    "chunk_id": "functional_gi_patterns.txt::chunk-1",
+    "source": "functional_gi_patterns.txt",
+    "title": "Functional Gi Patterns",
+    "text": "For functional dyspepsia and irritable bowel presentations, Ayurvedic assessment maps symptom clusters into vata, pitta, or kapha dominance with attention to stress, sleep, and diet triggers. Vata-dominant patterns may show pain, bloating, irregularity, and anxiety. Pitta-dominant patterns may show burning, acid regurgitation, irritability, and loose motions. Kapha-dominant patterns may show nausea, heaviness, slow digestion, and excessive salivation. Dietary plans are individualized but typically include warm, freshly prepared foods, reduction of ultra- processed meals, and graduated reintroduction after symptom stabilization. Lifestyle modules frequently include breathing practices, circadian meal routines, and stress regulation, because gut-brain factors are considered central in recurrent symptoms."
+  },
+  {
+    "chunk_id": "interventions_and_safety.txt::chunk-1",
+    "source": "interventions_and_safety.txt",
+    "title": "Interventions And Safety",
+    "text": "Common classical formulations discussed in gastro contexts include combinations involving ginger, pippali, trikatu, musta, bilva, or avipattikara depending on pattern and tolerance. Panchakarma-oriented strategies such as basti or virechana are typically considered after assessment of strength, season, and contraindications. For research writing, report interventions as multi-component care bundles: dietary protocol, behavioral practices, and herbal regimen with dose and duration. Include explicit safety language: screen for alarm symptoms such as GI bleeding, persistent vomiting, progressive weight loss, severe anemia, dysphagia, fever, and suspected obstruction; these require urgent biomedical evaluation and are outside self-management scope."
+  }
+]
