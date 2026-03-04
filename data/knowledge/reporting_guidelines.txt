@@ -1,0 +1,9 @@
+When reporting inferential statistics, include the test used, test statistic, p-value,
+and an effect size with confidence interval where possible. Also mention assumption checks
+such as normality and homogeneity of variances.
+
+For group comparisons, box plots are preferred over bar charts when distributions are skewed
+or when sample sizes are small, because they show spread and potential outliers.
+
+A p-value indicates compatibility with the null model, but practical importance should be
+interpreted with effect size magnitude and confidence intervals.
